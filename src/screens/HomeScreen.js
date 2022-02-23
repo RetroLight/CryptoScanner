@@ -19,8 +19,8 @@ const HomeScreen = props => {
         fetchCoinsList()
     }, [])
 
-    if(isFetching) {
-        return(
+    if (isFetching) {
+        return (
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <ActivityIndicator color={colors.riseColor} size='large'/>
             </View>
@@ -32,7 +32,11 @@ const HomeScreen = props => {
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={coinsList}
-                renderItem={({item}) => <TouchableOpacity onPress={() => props.navigation.navigate('CoinDetails', {coinId: item.id}) } activeOpacity={0.7}><CryptoItem coinData={item}/></TouchableOpacity>}
+                renderItem={({item}) =>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('CoinDetails', {coinId: item.id})}
+                                      activeOpacity={0.7}>
+                        <CryptoItem coinData={item}/>
+                    </TouchableOpacity>}
             />
         </View>
     )
